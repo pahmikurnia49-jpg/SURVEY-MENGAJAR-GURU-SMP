@@ -343,8 +343,9 @@
             setTimeout(() => { teks.remove(); }, 1000);
 
             if (klikAyang >= 100) {
-                document.getElementById('audio1').pause();
-                document.getElementById('audio2').play();
+document.getElementById('audio1').pause();
+document.getElementById('audio2').load(); // Tambahan untuk memastikan lagu termuat
+document.getElementById('audio2').play();
                 
                 bukaHalaman('galleryPage');
                 mulaiSlider();
