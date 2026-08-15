@@ -422,20 +422,27 @@
             }, 300); // Munculin tiap 0.3 detik
         }
 
-        // Animasi Auto-Scroll Pita Film
+       // Animasi Auto-Scroll Pita Film (Ngalir Mulus)
         function mulaiRollFilm() {
             const strip = document.getElementById('filmStrip');
-            let posisiScroll = 0;
             
-            setInterval(() => {
-                // Geser 270px (ukuran 1 foto + jarak gap)
-                strip.scrollBy({ left: 270, behavior: 'smooth' });
-                
-                // Kalau udah sampai ujung kanan, balik ke awal
-                if (strip.scrollLeft + strip.clientWidth >= strip.scrollWidth - 10) {
-                    setTimeout(() => { strip.scrollTo({ left: 0, behavior: 'smooth' }); }, 2000);
+            // Matikan efek smooth scroll bawaan yang bikin patah-patah
+            strip.style.scrollBehavior = 'auto'; 
+            
+            let kecepatan = 1; // ⚙️ ATUR KECEPATAN DI SINI (makin besar makin ngebut)
+
+            function animasiNgalir() {
+                strip.scrollLeft += kecepatan;
+
+                // Kalau udah sampai di foto paling ujung, langsung reset ke awal
+                if (strip.scrollLeft >= strip.scrollWidth - strip.clientWidth - 2) {
+                    strip.scrollLeft = 0; 
                 }
-            }, 3000); // Geser tiap 3 detik
+                
+                requestAnimationFrame(animasiNgalir); // Loop terus menerus tiada henti
+            }
+
+            animasiNgalir(); // Jalankan mesinnya
         }
     </script>
 </body>
