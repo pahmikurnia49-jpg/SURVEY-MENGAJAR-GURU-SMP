@@ -43,11 +43,8 @@
         .btn-submit { background-color: #0056b3; color: white; border: none; padding: 12px; width: 100%; border-radius: 5px; cursor: pointer; font-size: 16px; font-weight: bold;}
         .btn-submit:hover { background-color: #004494; }
 
-        /* GAYA HALAMAN ROMANTIS (Setelah Login) */
-        .romantic-bg {
-            background-color: #ffe6ea !important;
-            transition: background-color 1s ease;
-        }
+        /* GAYA HALAMAN ROMANTIS */
+        .romantic-bg { background-color: #ffe6ea !important; transition: background-color 1s ease; }
 
         /* KUE ULANG TAHUN MEGAH */
         .cake-container { margin-top: 50px; position: relative; display: flex; flex-direction: column; align-items: center;}
@@ -65,49 +62,79 @@
         
         /* GAYA HALAMAN SURAT - DIBUAT SCROLLABLE */
         .surat-kertas { 
-            background: #fff9e6; 
-            padding: 25px; 
-            border-radius: 10px; 
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1); 
-            font-family: 'Georgia', serif; 
-            line-height: 1.8; 
-            text-align: justify; 
-            position: relative;
-            max-height: 65vh; /* Batas tinggi surat */
-            overflow-y: auto; /* Memunculkan scroll jika kepanjangan */
-            border: 2px solid #f2e3c6;
+            background: #fff9e6; padding: 25px; border-radius: 10px; 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1); font-family: 'Georgia', serif; 
+            line-height: 1.8; text-align: justify; position: relative;
+            max-height: 65vh; overflow-y: auto; border: 2px solid #f2e3c6;
         }
-        
-        .arabic-text {
-            font-family: 'Traditional Arabic', 'Amiri', serif;
-            font-size: 1.4em;
-            text-align: right;
-            direction: rtl;
-            margin-bottom: 20px;
-            color: #2c3e50;
-            line-height: 2;
-        }
+        .arabic-text { font-family: 'Traditional Arabic', 'Amiri', serif; font-size: 1.4em; text-align: right; direction: rtl; margin-bottom: 20px; color: #2c3e50; line-height: 2; }
+        .surat-kertas::-webkit-scrollbar { width: 8px; }
+        .surat-kertas::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 10px; }
+        .surat-kertas::-webkit-scrollbar-thumb { background: #ffb3c6; border-radius: 10px; }
 
         /* GAYA GAME TEBAK GAMBAR */
         #fotoSaya { width: 150px; height: 150px; border-radius: 50%; object-fit: cover; border: 5px solid #ff4d6d; box-shadow: 0 5px 15px rgba(0,0,0,0.2); margin-bottom: 20px;}
-        .btn-game { padding: 10px 20px; margin: 10px; font-size: 16px; border: none; border-radius: 10px; cursor: pointer; font-weight: bold; color: white; transition: transform 0.1s; position: relative; z-index: 10;}
+        .btn-game { padding: 10px 20px; margin: 10px; font-size: 16px; border: none; border-radius: 10px; cursor: pointer; font-weight: bold; color: white; position: relative; z-index: 10;}
         .btn-musuh { background-color: #333; }
         .btn-teman { background-color: #888; }
         .btn-ayang { background-color: #ff4d6d; z-index: 5;}
         .floating-text { position: absolute; font-size: 18px; font-weight: bold; color: #ff1a1a; pointer-events: none; animation: floatUp 1s forwards; white-space: nowrap; z-index: 20;}
         @keyframes floatUp { 0% { opacity: 1; transform: translateY(0) scale(1); } 100% { opacity: 0; transform: translateY(-50px) scale(1.5); } }
 
-        /* GAYA GALERI HADIAH */
-        .slider-container { width: 100%; max-width: 400px; height: 450px; margin: 0 auto; overflow: hidden; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); position: relative; background: #fff;}
-        .slider-img { width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0; opacity: 0; transition: opacity 1s ease-in-out; }
-        .slider-img.tampil { opacity: 1; }
-        .ucapan-slider { margin-top: 20px; font-size: 20px; font-weight: bold; color: #ff4d6d; line-height: 1.5; }
+        /* =========================================
+           GAYA BARU: GALERI MALAM ESTETIK & ROLL FILM 
+           ========================================= */
+        .dark-aesthetic-bg { background-color: #0a0a0a !important; color: white !important; transition: background-color 2s ease; overflow: hidden;}
+        
+        .film-roll-container {
+            width: 100vw;
+            margin-left: calc(-50vw + 50%); /* Biar nembus batas padding layar */
+            background-color: #111;
+            border-top: 10px dashed #fff; /* Efek pita film */
+            border-bottom: 10px dashed #fff;
+            padding: 15px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+            position: relative;
+            z-index: 10;
+        }
 
-        /* Kustomisasi scrollbar untuk surat */
-        .surat-kertas::-webkit-scrollbar { width: 8px; }
-        .surat-kertas::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 10px; }
-        .surat-kertas::-webkit-scrollbar-thumb { background: #ffb3c6; border-radius: 10px; }
-        .surat-kertas::-webkit-scrollbar-thumb:hover { background: #ff4d6d; }
+        .film-strip {
+            display: flex;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            gap: 15px;
+            padding: 0 20px;
+        }
+
+        /* Sembunyikan scrollbar bawah */
+        .film-strip::-webkit-scrollbar { display: none; }
+        
+        .film-strip img {
+            height: 350px;
+            min-width: 250px;
+            object-fit: cover;
+            border-radius: 8px;
+            border: 2px solid #333;
+            box-shadow: 0 0 15px rgba(255, 77, 109, 0.3);
+        }
+
+        .ucapan-slider { margin-top: 30px; font-size: 20px; font-weight: bold; color: #ffb3c6; line-height: 1.5; z-index: 10; position: relative;}
+        
+        /* Bintang dan Love Terbang */
+        .particle { position: fixed; bottom: -20px; pointer-events: none; opacity: 0; z-index: 1; animation: floatParticle linear infinite; }
+        @keyframes floatParticle {
+            0% { transform: translateY(0) rotate(0deg) scale(0.8); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 0.8; }
+            100% { transform: translateY(-100vh) rotate(360deg) scale(1.2); opacity: 0; }
+        }
+
+        /* Tombol Darurat Audio */
+        #audioFallback {
+            display: none; background: rgba(0,0,0,0.8); border: 1px solid #ff4d6d; color: #ffb3c6;
+            padding: 10px 20px; border-radius: 20px; font-size: 14px; margin-top: 10px; cursor: pointer;
+            z-index: 20; position: relative;
+        }
     </style>
 </head>
 <body>
@@ -158,7 +185,7 @@
         </div>
     </div>
 
-    <!-- HALAMAN 3: SURAT UCAPAN (SCROLLABLE) -->
+    <!-- HALAMAN 3: SURAT UCAPAN -->
     <div id="letterPage" class="page">
         <div class="surat-kertas">
             <p style="text-align: center; font-weight: bold; font-size: 1.2em; color: #2c3e50;">بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ</p>
@@ -200,7 +227,6 @@
                 آمِينَ يَا رَبَّ الْعَالَمِينَ.
             </div>
         </div>
-        <!-- Instruksi scroll disematkan halus di bawah surat -->
         <p style="font-size: 12px; color: #888; margin-top: 10px;">(Scroll ke bawah untuk membaca seluruh doa)</p>
         <button class="btn-romantis" onclick="bukaHalaman('gamePage')">🎁 Buka Hadiah 🎁</button>
     </div>
@@ -217,22 +243,33 @@
         </div>
     </div>
 
-    <!-- HALAMAN 5: GALERI ESTETIK -->
+    <!-- HALAMAN 5: GALERI ROLL FILM ESTETIK -->
     <div id="galleryPage" class="page">
-        <div class="slider-container" id="sliderBox">
-            <img src="foto1.jpg" class="slider-img tampil" onerror="this.src='https://via.placeholder.com/400x500?text=Foto+1'">
-            <img src="foto2.jpg" class="slider-img" onerror="this.src='https://via.placeholder.com/400x500?text=Foto+2'">
-            <img src="foto3.jpg" class="slider-img" onerror="this.src='https://via.placeholder.com/400x500?text=Foto+3'">
-            <img src="foto4.jpg" class="slider-img" onerror="this.src='https://via.placeholder.com/400x500?text=Foto+4'">
-            <img src="foto5.jpg" class="slider-img" onerror="this.src='https://via.placeholder.com/400x500?text=Foto+5'">
-            <img src="foto6.jpg" class="slider-img" onerror="this.src='https://via.placeholder.com/400x500?text=Foto+6'">
-            <img src="foto7.jpg" class="slider-img" onerror="this.src='https://via.placeholder.com/400x500?text=Foto+7'">
-            <img src="foto8.jpg" class="slider-img" onerror="this.src='https://via.placeholder.com/400x500?text=Foto+8'">
-            <img src="foto9.jpg" class="slider-img" onerror="this.src='https://via.placeholder.com/400x500?text=Foto+9'">
-            <img src="foto10.jpg" class="slider-img" onerror="this.src='https://via.placeholder.com/400x500?text=Foto+10'">
+        <h2 style="color: #ffb3c6; margin-bottom: 20px;">Hadiah Spesial Untukmu 🎁</h2>
+        
+        <!-- PITA ROLL FILM -->
+        <div class="film-roll-container">
+            <div class="film-strip" id="filmStrip">
+                <img src="foto1.jpg" onerror="this.src='https://via.placeholder.com/250x350?text=Foto+1'">
+                <img src="foto2.jpg" onerror="this.src='https://via.placeholder.com/250x350?text=Foto+2'">
+                <img src="foto3.jpg" onerror="this.src='https://via.placeholder.com/250x350?text=Foto+3'">
+                <img src="foto4.jpg" onerror="this.src='https://via.placeholder.com/250x350?text=Foto+4'">
+                <img src="foto5.jpg" onerror="this.src='https://via.placeholder.com/250x350?text=Foto+5'">
+                <img src="foto6.jpg" onerror="this.src='https://via.placeholder.com/250x350?text=Foto+6'">
+                <img src="foto7.jpg" onerror="this.src='https://via.placeholder.com/250x350?text=Foto+7'">
+                <img src="foto8.jpg" onerror="this.src='https://via.placeholder.com/250x350?text=Foto+8'">
+                <img src="foto9.jpg" onerror="this.src='https://via.placeholder.com/250x350?text=Foto+9'">
+                <img src="foto10.jpg" onerror="this.src='https://via.placeholder.com/250x350?text=Foto+10'">
+            </div>
         </div>
+
         <p class="ucapan-slider">Selamat Ulang Tahun<br>Sehat Selalu Calon Istriku 💍🤍✨👩‍❤️‍👨</p>
-        <button class="btn-romantis" style="background: #333;" onclick="location.reload()">Ulangi dari Awal 🔄</button>
+        
+        <!-- Tombol Bantuan Audio (Mencegah Error Lagu Kedua) -->
+        <button id="audioFallback" onclick="paksaPutarLagu()">🎵 Musik Belum Nyala? Klik Di Sini 🎵</button>
+
+        <br><br>
+        <button class="btn-romantis" style="background: #333; box-shadow:none; z-index:10; position:relative;" onclick="location.reload()">Ulangi dari Awal 🔄</button>
     </div>
 
     <!-- SCRIPT JAVASCRIPT LOGIC -->
@@ -254,7 +291,7 @@
         function bukaHalaman(idHalaman) {
             document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
             document.getElementById(idHalaman).classList.add('active');
-            window.scrollTo(0, 0); // Scroll ke atas saat pindah halaman
+            window.scrollTo(0, 0); 
         }
 
         let audioContext, microphone, analyser;
@@ -290,8 +327,7 @@
         function matikanApi() {
             if(apiMati) return;
             apiMati = true;
-            const api = document.querySelectorAll('.flame');
-            api.forEach(f => f.style.display = 'none'); 
+            document.querySelectorAll('.flame').forEach(f => f.style.display = 'none'); 
             document.getElementById('btnLanjutSurat').style.display = 'block'; 
         }
 
@@ -299,22 +335,17 @@
             const container = btn.parentElement;
             const maxX = container.clientWidth - btn.clientWidth;
             const maxY = container.clientHeight - btn.clientHeight;
-            
-            const randomX = Math.floor(Math.random() * maxX);
-            const randomY = Math.floor(Math.random() * maxY);
-            
             btn.style.position = 'absolute';
-            btn.style.left = randomX + 'px';
-            btn.style.top = randomY + 'px';
+            btn.style.left = Math.floor(Math.random() * maxX) + 'px';
+            btn.style.top = Math.floor(Math.random() * maxY) + 'px';
         }
 
         let klikAyang = 0;
         let ukuranAyang = 1;
         const reaksiSalting = [
-            "Ih gemes! 😍", "Makin sayang deh! ❤️", "Ayo terus tekan! 😘", 
-            "Bucin banget sih kamu 🤭", "Kangen ya? 💕", "Cie salting! 😜", 
-            "I love you! 💖", "Kamu cantik banget hari ini ✨", "Jantungku berdebar! 💓", 
-            "Duh, senyumnya manis banget! 🍯", "Semangat nekennya! 😂", "Udah pegel belum? 😝",
+            "Ih gemes! 😍", "Makin sayang deh! ❤️", "Ayo terus tekan! 😘", "Bucin banget sih kamu 🤭", 
+            "Kangen ya? 💕", "Cie salting! 😜", "I love you! 💖", "Kamu cantik banget hari ini ✨", 
+            "Jantungku berdebar! 💓", "Duh, manisnya! 🍯", "Semangat nekennya! 😂", "Udah pegel belum? 😝",
             "Makin gede nih cintanya! 📈", "Gak sabar peluk kamu! 🫂", "Aduh melting! 🫠",
             "Calon istriku lucu banget! 💍", "Terus tekan sayang! 🫶", "Cintaku tumpah-tumpah! 🌊"
         ];
@@ -331,36 +362,80 @@
             teks.className = 'floating-text';
             teks.innerText = reaksiSalting[Math.floor(Math.random() * reaksiSalting.length)];
             
-            // Handle touch event for mobile smoothly
             const clientX = event.clientX || (event.touches && event.touches[0].clientX) || window.innerWidth / 2;
             const clientY = event.clientY || (event.touches && event.touches[0].clientY) || window.innerHeight / 2;
-            
             teks.style.left = (clientX - 20) + 'px';
             teks.style.top = (clientY - 30) + 'px';
-            
             document.body.appendChild(teks);
             
             setTimeout(() => { teks.remove(); }, 1000);
 
             if (klikAyang >= 100) {
-document.getElementById('audio1').pause();
-document.getElementById('audio2').load(); // Tambahan untuk memastikan lagu termuat
-document.getElementById('audio2').play();
-                
-                bukaHalaman('galleryPage');
-                mulaiSlider();
+                transisiKeAkhir();
             }
         }
 
-        function mulaiSlider() {
-            let indexFoto = 0;
-            const fotoS = document.querySelectorAll('.slider-img');
+        function transisiKeAkhir() {
+            // Ubah Latar Jadi Hitam Malam
+            document.body.classList.remove('romantic-bg');
+            document.body.classList.add('dark-aesthetic-bg');
+            
+            // Urusan Musik yang Susah Diatur
+            let lagu1 = document.getElementById('audio1');
+            let lagu2 = document.getElementById('audio2');
+            
+            lagu1.pause();
+            lagu2.load();
+            
+            // Coba Play, kalau diblokir munculkan tombol fallback
+            let playPromise = lagu2.play();
+            if (playPromise !== undefined) {
+                playPromise.catch(error => {
+                    document.getElementById('audioFallback').style.display = 'inline-block';
+                });
+            }
+
+            bukaHalaman('galleryPage');
+            buatBintang();
+            mulaiRollFilm();
+        }
+
+        // Tombol Darurat Kalau Musik Diblokir
+        function paksaPutarLagu() {
+            document.getElementById('audio2').play();
+            document.getElementById('audioFallback').style.display = 'none';
+        }
+
+        // Animasi Bintang dan Hati Terbang (Estetik)
+        function buatBintang() {
+            const simbol = ['✨', '💫', '🤍', '💖', '⭐'];
+            setInterval(() => {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                particle.innerText = simbol[Math.floor(Math.random() * simbol.length)];
+                particle.style.left = Math.random() * 100 + 'vw';
+                particle.style.animationDuration = (Math.random() * 3 + 4) + 's'; // 4-7 detik terbang
+                particle.style.fontSize = (Math.random() * 15 + 10) + 'px';
+                
+                document.body.appendChild(particle);
+                setTimeout(() => { particle.remove(); }, 7000);
+            }, 300); // Munculin tiap 0.3 detik
+        }
+
+        // Animasi Auto-Scroll Pita Film
+        function mulaiRollFilm() {
+            const strip = document.getElementById('filmStrip');
+            let posisiScroll = 0;
             
             setInterval(() => {
-                fotoS[indexFoto].classList.remove('tampil');
-                indexFoto = (indexFoto + 1) % fotoS.length;
-                fotoS[indexFoto].classList.add('tampil');
-            }, 3000); 
+                // Geser 270px (ukuran 1 foto + jarak gap)
+                strip.scrollBy({ left: 270, behavior: 'smooth' });
+                
+                // Kalau udah sampai ujung kanan, balik ke awal
+                if (strip.scrollLeft + strip.clientWidth >= strip.scrollWidth - 10) {
+                    setTimeout(() => { strip.scrollTo({ left: 0, behavior: 'smooth' }); }, 2000);
+                }
+            }, 3000); // Geser tiap 3 detik
         }
     </script>
 </body>
